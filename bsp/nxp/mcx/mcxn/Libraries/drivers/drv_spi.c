@@ -23,6 +23,9 @@ enum
 #ifdef BSP_USING_SPI6
     SPI6_INDEX,
 #endif
+#ifdef BSP_USING_SPI7
+    SPI7_INDEX,
+#endif
 };
 
 
@@ -76,6 +79,20 @@ static struct lpc_spi lpc_obj[] =
             .tx_dma_chl = 4,
             .rx_dma_chl = 5,
             .name = "spi6",
+        },
+#endif
+#ifdef BSP_USING_SPI7
+        {
+            .LPSPIx = LPSPI7,
+            .clock_attach_id = kFRO_HF_DIV_to_FLEXCOMM7,
+            .clock_div_name = kCLOCK_DivFlexcom7Clk,
+            .clock_name = kCLOCK_FroHf,
+            .tx_dma_request = kDmaRequestMuxLpFlexcomm7Tx,
+            .rx_dma_request = kDmaRequestMuxLpFlexcomm7Rx,
+            .DMAx = DMA0,
+            .tx_dma_chl = 6,
+            .rx_dma_chl = 7,
+            .name = "spi7",
         },
 #endif
 };
